@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
-const UPSTASH_REDIS_REST_URL = process.env.UPSTASH_REDIS_REST_URL;
-const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY || '';
+const UPSTASH_REDIS_REST_URL = process.env.UPSTASH_REDIS_REST_URL || '';
+const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || '';
 
 if (!ANTHROPIC_API_KEY) {
-  throw new Error('ANTHROPIC_API_KEY environment variable is not set');
+  console.error('ANTHROPIC_API_KEY environment variable is not set');
 }
 
 interface AssessmentData {
@@ -213,7 +213,7 @@ the core PM competencies.`;
         'Content-Type': 'application/json',
         'x-api-key': ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01',
-      },
+      } as Record<string, string>,
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 1024,
