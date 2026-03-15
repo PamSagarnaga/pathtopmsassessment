@@ -80,12 +80,10 @@ export default function LandingPage({ onStart }: LandingPageProps) {
           style={{
             fontSize: '18px',
             color: '#666666',
-            marginBottom: '24px',
             fontFamily: "'Inter', sans-serif",
             lineHeight: '1.6',
             maxWidth: '600px',
-            margin: '0 auto',
-            marginBottom: '24px',
+            margin: '0 auto 24px auto',
           }}
         >
           Discover your Project Manager readiness in 12 minutes.
